@@ -14,6 +14,7 @@ struct MovieDetailView: View {
     var body: some View {
         ScrollView {
             if let url = URL(string: movie.Poster) {
+                // Async Image to fetch image from URL Poster
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .empty:
@@ -33,7 +34,7 @@ struct MovieDetailView: View {
                     }
                 }
             }
-            
+            // Display the details of Movie Detail Screen
             Text(movie.Title)
                 .font(.largeTitle)
                 .padding(.top)
@@ -47,12 +48,14 @@ struct MovieDetailView: View {
             Text("Released on: \(movie.Released)")
             
             Text("Genre : \(movie.Genre)")
-
+            
+            // Creting thr Picker for the Rating Source
             Picker("Rating Source", selection: $selectedRatingSource) {
                 ForEach(movie.Ratings.map { $0.Source }, id: \.self) { source in
                     Text(source).tag(source)
                 }
             }
+            
             
             if let rating = movie.Ratings.first(where: { $0.Source == selectedRatingSource }) {
                 Text("Rating: \(rating.Value)")

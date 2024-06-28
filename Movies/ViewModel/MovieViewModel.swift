@@ -7,6 +7,7 @@
 
 import Foundation
 
+// ViewModel Class for the Movie
 class MovieViewModel: ObservableObject {
     @Published var movies : [Movie] = []
     @Published var searchText : String = ""
@@ -14,9 +15,11 @@ class MovieViewModel: ObservableObject {
     @Published var selectedValue: String?
     
     init() {
+        // Loading movies at the time of intiaization
         loadMovies()
     }
     
+    //Function to load movies
     func loadMovies() {
         guard let url = Bundle.main.url(forResource: "movies", withExtension: "json") else {
             print("Invalid file type")
@@ -31,6 +34,7 @@ class MovieViewModel: ObservableObject {
         }
     }
     
+    // Filtering movies based on Title, Genre, Director and Actors based on the search field
     var filteredMovies: [Movie] {
         if searchText.isEmpty {
             return movies

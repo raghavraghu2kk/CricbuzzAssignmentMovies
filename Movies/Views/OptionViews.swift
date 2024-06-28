@@ -20,6 +20,7 @@ struct OptionViews: View {
                 isTapped.toggle()
             }})
         {
+            // Section on tapped displays the list of option selected
             if isTapped && option != "All Movies"{
                 ForEach(getValues(for: option), id: \.self) { value in
                     NavigationLink(destination: MovieListView(option: option, value: value, movies: movies)) {
@@ -43,6 +44,7 @@ struct OptionViews: View {
 }
 
 extension OptionViews {
+    // Function getValues to Add the list of options using set for unique values and then return an array of strings
     private func getValues(for option: String) -> [String] {
         var values: Set<String> = []
         for movie in movies {

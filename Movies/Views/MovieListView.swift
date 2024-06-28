@@ -12,6 +12,7 @@ struct MovieListView: View {
     let value : String?
     let movies : [Movie]
     
+    // Retuens the movies array for the filtered value
     var filteredMovies: [Movie] {
         switch option {
         case "Year" : return movies.filter { $0.sanitizedYear == value }
@@ -24,6 +25,7 @@ struct MovieListView: View {
     }
     
     var body: some View {
+        // Displays the list of filtered movies
         List(filteredMovies) { movie in
             NavigationLink(destination: MovieDetailView(movie: movie)) {
                 MovieRow(movie: movie)

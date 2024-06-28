@@ -11,8 +11,10 @@ struct MovieRow: View {
     let movie: Movie
 
     var body: some View {
+        // Movie row screen 
         HStack {
             if let url = URL(string: movie.Poster) {
+                // Async Image for Poster Image to fetch from URL
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .empty:
@@ -32,6 +34,8 @@ struct MovieRow: View {
                     }
                 }
             }
+            
+            
             VStack(alignment: .leading) {
                 Text(movie.Title)
                     .font(.headline)

@@ -8,7 +8,8 @@
 import Foundation
 
 struct Movie : Identifiable, Codable, Hashable {
-
+    
+    //Created the Model for JSON File
     let id = UUID()
     let Title: String
     let Year: String
